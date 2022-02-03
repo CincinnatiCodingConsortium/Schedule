@@ -1,4 +1,4 @@
-const { postToDiscord } = require("./postToDiscord")
+const { postToDiscord } = require("./webAPI/discord/postToDiscord")
 
 const app = () => {
 
