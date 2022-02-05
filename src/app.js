@@ -1,6 +1,7 @@
 const { postToDiscord } = require("./webAPI/discord/postToDiscord")
+const { fetchSchedule } = require("./webAPI/scheduleDB")
 
-const app = () => {
+const app = async () => {
 
     const TEST_DISCORD_WEBHOOK = process.env.TEST_DISCORD_WEBHOOK
     const content =
@@ -17,7 +18,10 @@ const app = () => {
         content: content
     }
 
-    postToDiscord(TEST_DISCORD_WEBHOOK, contentWrapper)
+    const schedule = await fetchSchedule()
+    console.log(schedule)
+    
+    // postToDiscord(TEST_DISCORD_WEBHOOK, contentWrapper)
 
 }
 

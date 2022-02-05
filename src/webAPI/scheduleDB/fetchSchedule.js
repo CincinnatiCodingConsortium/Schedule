@@ -12,5 +12,3 @@ const fetchSchedule = async () => {
 }
 
 module.exports = { fetchSchedule }
-
-// export * from './fetchSchedule.js'
