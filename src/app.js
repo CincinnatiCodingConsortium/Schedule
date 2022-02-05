@@ -1,28 +1,14 @@
-const { postToDiscord } = require("./webAPI/discord/postToDiscord")
-const { fetchSchedule } = require("./webAPI/scheduleDB")
+import { postToDiscord } from "./webAPI/discord/postToDiscord"
+import { fetchSchedule } from "./webAPI/scheduleDB"
+import { testMessage } from "./content"
+import { TEST_DISCORD_WEBHOOK } from "./constants"
 
-const app = async () => {
-
-    const TEST_DISCORD_WEBHOOK = process.env.TEST_DISCORD_WEBHOOK
-    const content =
-    "**Next Meetup** \n" +
-    "\n" +
-    "Topic: the thing\n" +
-    "Host:\n" +
-    "Date:\n" +
-    "Time: 8:00 PM EST\n" +
-    "Details:\n" +
-    "\n" +
-    "See you there!"
-    const contentWrapper = {
-        content: content
-    }
+export const app = async () => {
 
     const schedule = await fetchSchedule()
     console.log(schedule)
     
-    // postToDiscord(TEST_DISCORD_WEBHOOK, contentWrapper)
-
+    // COMMENTED OUT TO AVOID NON-STOP POSTS ANNOYING KORY DURING TESTING
+    // const result = await postToDiscord(TEST_DISCORD_WEBHOOK, { content: testMessage })
+    // console.log(result.status)
 }
-
-module.exports = { app }
