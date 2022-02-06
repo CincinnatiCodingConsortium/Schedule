@@ -1,11 +1,11 @@
-import { fetchSchedule } from "./webAPI/scheduleDB"
+import { fetchUpcomingSchedule } from "./webAPI/scheduleDB"
 import { postToDiscord } from "./webAPI/discord/postToDiscord"
-import { testMessage } from "./messageTemplates"
+import { testMessage } from "./messages"
 import { TEST_DISCORD_WEBHOOK } from "./constants"
 
 export const app = async () => {
 
-    const schedule = await fetchSchedule()
+    const schedule = await fetchUpcomingSchedule()
     console.log(schedule)
     
     // COMMENTED OUT TO AVOID NON-STOP POSTS ANNOYING KORY DURING TESTING

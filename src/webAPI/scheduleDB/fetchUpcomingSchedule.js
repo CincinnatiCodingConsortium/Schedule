@@ -1,7 +1,7 @@
 import fs from 'fs'
 
-export const fetchSchedule = async () => {
-    const result = await fs.promises.readFile('./data/schedule.json')
+export const fetchUpcomingSchedule = async () => {
+    const result = await fs.promises.readFile('./data/upcomingSchedule.json')
     return JSON.parse(result)
 }
 
