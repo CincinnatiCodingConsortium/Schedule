@@ -1,6 +1,6 @@
-import { postToDiscord } from "./webAPI/discord/postToDiscord"
 import { fetchSchedule } from "./webAPI/scheduleDB"
-import { testMessage } from "./content"
+import { postToDiscord } from "./webAPI/discord/postToDiscord"
+import { testMessage } from "./messageTemplates"
 import { TEST_DISCORD_WEBHOOK } from "./constants"
 
 export const app = async () => {
