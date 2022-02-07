@@ -1,0 +1,46 @@
+[
+    {
+        "date": 
+        {
+            "year": 2022,
+            "month": 1,
+            "day": 11
+        },
+        "host": "Paul",
+        "topic": "Code Escape",
+        "abstract": "Paul leads the gang in a code breakout room"
+    }, 
+    {
+        "date":
+        {
+            "year": 2022,
+            "month": 1,
+            "day": 25
+        },
+        "host": "Sam",
+        "topic": "Web Vitals",
+        "abstract": "Sam teaches us how to check your site's viability in the eyes of Google"
+    },
+    {
+        "date":
+        {
+            "year": 2022,
+            "month": 2,
+            "day": 8
+        },
+        "host": "Randy",
+        "topic": "Round-Table: Tech Productivity Share",
+        "abstract": "Everyone brings their favorite plugins, apps, and general tips that help their work productivty"
+    },
+    {
+        "date":
+        {
+            "year": 2022,
+            "month": 2,
+            "day": 22
+        },
+        "host": "Richard",
+        "topic": "Next.js",
+        "abstract": "Richard gives an overview on what he's learned using the Next.js framework"
+    }
+]

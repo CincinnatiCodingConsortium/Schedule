@@ -1,1 +1,0 @@
-export const TEST_DISCORD_WEBHOOK = process.env.TEST_DISCORD_WEBHOOK

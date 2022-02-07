@@ -1,15 +1,8 @@
-export const getCurrentYearMonthDay = () => {
-    
-    const currentDate = new Date()
+const currentDateObject = new Date()
 
-    console.log(`Date to be used: ${currentDate.toDateString()}`)
+export const currentYear = currentDateObject.getFullYear()
 
-    return ({
-        currentYear: currentDate.getFullYear(),
-        currentMonth: currentDate.getMonth(),
-        currentDate: currentDate.getDate()
-    })
-}
-    
-    
+export const currentMonth = currentDateObject.getMonth() + 1
+
+export const currentDate = currentDateObject.getDate()
     

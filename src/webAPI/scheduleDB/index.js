@@ -1,1 +1,2 @@
-export * from './fetchUpcomingSchedule.js'
+export * from './fetchUpcomingSchedule'
+export * from './fetchPastScheduleArchive'
