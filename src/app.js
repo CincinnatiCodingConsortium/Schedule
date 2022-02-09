@@ -1,15 +1,12 @@
-import { fetchUpcomingSchedule } from "./webAPI/scheduleDB"
 import { postToDiscord } from "./webAPI/discord/postToDiscord"
 import { testMessage } from "./messages"
-import { isFutureEvent, isPastEvent } from "./schedule-handling/utils"
+import { archivePastEvents } from "./schedule-handling"
 
 
 export const app = async () => {
 
-    const schedule = await fetchUpcomingSchedule()
-    console.log(schedule)
-    const pastSchedule = schedule.filter(isPastEvent)
-    console.log(pastSchedule)
+    const result = await archivePastEvents()
+    console.log(result)
 
     
 
