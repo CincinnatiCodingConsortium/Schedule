@@ -19,15 +19,25 @@ export const app = async () => {
         auth: NOTION_SCHEDULE_PLANNER_INTEGRATION_TOKEN
     })
 
- 
-    // Create 
+    // Create Sorting request function
     async function fetchDatabase() {
         const databaseId = NOTION_SCHEDULE_DATABASE_ID;
-        const response = await notion.databases.retrieve({ database_id: databaseId });
+        const response = await notion.databases.query({ 
+            database_id: databaseId,
+            sorts: [
+                {
+                    property: 'Date',
+                    direction: 'ascending'
+                }
+            ]
+        })
         console.log(response)
     }
 
     fetchDatabase()
+
+
+
 
     // COMMENTED OUT TO AVOID NON-STOP POSTS ANNOYING KORY DURING TESTING
     // const result = await postToDiscord(TEST_DISCORD_WEBHOOK, { content: testMessage })
