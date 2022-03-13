@@ -5,9 +5,13 @@ import { TEST_DISCORD_WEBHOOK } from "./constants"
 
 export const app = async () => {
 
-    const schedule = await fetchUpcomingSchedule()
-    console.log(schedule)
+    // POSSIBLY OBSOLETE
+    // const schedule = await fetchUpcomingSchedule()
+    // console.log(schedule)
     
+    console.log(process.env.NOTION_SCHEDULE_PLANNER_INTEGRATION)
+    console.log(process.env.NOTION_SCHEDULE_DATABASE_ID)
+
     // COMMENTED OUT TO AVOID NON-STOP POSTS ANNOYING KORY DURING TESTING
     // const result = await postToDiscord(TEST_DISCORD_WEBHOOK, { content: testMessage })
     // console.log(result.status)
