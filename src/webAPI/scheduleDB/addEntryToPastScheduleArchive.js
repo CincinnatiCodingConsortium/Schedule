@@ -8,4 +8,5 @@ export const addEntryToPastScheduleArchive = async (arrayOfEntries) => {
     return result === undefined ? "Past Schedule Archive successfully updated!" : result
 }
 
+// This is a PUT operation.  Will add to what is already there while maintaining "DB"s immutable state.
 
