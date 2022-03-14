@@ -1,19 +1,9 @@
-import { fetchUpcomingSchedule } from "./webAPI/scheduleDB"
 import { postToDiscord } from "./webAPI/discord/postToDiscord"
 import { testMessage } from "./messages"
 import { TEST_DISCORD_WEBHOOK } from "./constants"
 import { fetchDatabase } from "./webAPI/notion"
 
 export const app = async () => {
-
-    // POSSIBLY OBSOLETE
-    // const schedule = await fetchUpcomingSchedule()
-    // console.log(schedule)
-    
-    const NOTION_SCHEDULE_PLANNER_INTEGRATION_TOKEN = process.env.NOTION_SCHEDULE_PLANNER_INTEGRATION_TOKEN
-    const NOTION_SCHEDULE_DATABASE_ID = process.env.NOTION_SCHEDULE_DATABASE_ID
-
-
 
 
     const response = await fetchDatabase()
