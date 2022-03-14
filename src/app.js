@@ -38,12 +38,6 @@ export const app = async () => {
     response.results.forEach(entry => entry.properties['Meeting Title']?.title[0]?.plain_text ? consoleLogEntry(entry.properties) : null)
 
 
-    function extractAnnouncementPropertiesIntoArray(entry) {
-        const { ...goodProperties } = entry
-    }
-
-
-
 
     // COMMENTED OUT TO AVOID NON-STOP POSTS ANNOYING KORY DURING TESTING
     // const result = await postToDiscord(TEST_DISCORD_WEBHOOK, { content: testMessage })
