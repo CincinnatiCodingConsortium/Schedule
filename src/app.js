@@ -31,10 +31,34 @@ export const app = async () => {
                 }
             ]
         })
-        console.log(response)
+        return response
     }
 
-    fetchDatabase()
+    const response = await fetchDatabase()
+
+    const firstEntry = response.results[0].properties
+
+    function consoleLogEntry(entry) {
+        console.log('*******************')
+        console.log(`\nMeeting Title: ${entry['Meeting Title']?.title[0]?.plain_text}`)
+        console.log('\nDescription:')
+        console.log(entry?.Description?.rich_text[0]?.plain_text)
+        console.log(`\nDate: ${entry?.Date?.date?.start}`)
+        console.log(`\nMeeting Focus: ${entry['Meeting Focus']?.rich_text[0]?.plain_text}`)
+        console.log(`\nFormat: ${entry?.Format?.select?.name}`)
+        console.log(`\nMeeting Style: ${entry['Meeting Style']?.select?.name}`)
+        console.log(`\nHost: ${entry?.Host?.rich_text[0]?.plain_text}`)
+        console.log('\n*******************')
+    }
+
+    consoleLogEntry(firstEntry)
+
+    response.results.forEach(entry => entry.properties['Meeting Title']?.title[0]?.plain_text ? consoleLogEntry(entry.properties) : null)
+
+
+    function extractAnnouncementPropertiesIntoArray(entry) {
+        const { ...goodProperties } = entry
+    }
 
 
 
