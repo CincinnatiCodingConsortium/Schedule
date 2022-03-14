@@ -6,7 +6,7 @@ const notion = new Client({
 })
 
 // Create Sorting request function
-export async function fetchDatabase() {
+export async function fetchAllScheduleEntries() {
     const databaseId = process.env.NOTION_SCHEDULE_DATABASE_ID;
     const response = await notion.databases.query({ 
         database_id: databaseId,
