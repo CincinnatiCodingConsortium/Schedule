@@ -2,7 +2,7 @@ import { fetchUpcomingSchedule } from "./webAPI/scheduleDB"
 import { postToDiscord } from "./webAPI/discord/postToDiscord"
 import { testMessage } from "./messages"
 import { TEST_DISCORD_WEBHOOK } from "./constants"
-import { Client } from "@notionhq/client"
+import { fetchDatabase } from "./webAPI/notion"
 
 export const app = async () => {
 
@@ -14,25 +14,7 @@ export const app = async () => {
     const NOTION_SCHEDULE_DATABASE_ID = process.env.NOTION_SCHEDULE_DATABASE_ID
 
 
-    // Set up SDK Client with authorization
-    const notion = new Client({
-        auth: NOTION_SCHEDULE_PLANNER_INTEGRATION_TOKEN
-    })
 
-    // Create Sorting request function
-    async function fetchDatabase() {
-        const databaseId = NOTION_SCHEDULE_DATABASE_ID;
-        const response = await notion.databases.query({ 
-            database_id: databaseId,
-            sorts: [
-                {
-                    property: 'Date',
-                    direction: 'ascending'
-                }
-            ]
-        })
-        return response
-    }
 
     const response = await fetchDatabase()
 
