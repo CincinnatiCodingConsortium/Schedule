@@ -10,8 +10,6 @@ export const app = async () => {
 
     const firstEntry = response[0]
 
-
-
     console.log(response)
 
     // response.results.forEach(entry => entry.properties['Meeting Title']?.title[0]?.plain_text ? console.log(loggableEventMessage(entry.properties)) : null)
