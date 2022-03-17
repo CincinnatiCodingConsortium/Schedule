@@ -15,5 +15,10 @@ export async function queryNotionDatabase({ clientToken, databaseID, sortsArray,
         filter: filterObject
     })
 
+    if (isRaw) {
+        return response
+    }
+
     return response.results.map(entry => extractEssentialPropertyValues(entry.properties))
+
 }

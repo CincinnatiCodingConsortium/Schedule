@@ -11,3 +11,13 @@ export function extractEssentialPropertyValues(entryProperties) {
         host: entryProperties?.Host?.rich_text[0]?.plain_text
     })
 }
+
+export function formatResponse(queryReponse) {
+    const { results } = queryReponse
+    results.map(entry => extractAndFormatEntryProperties(entry.properties))
+}
+
+export function extractAndFormatEntryProperties(unformattedProperties) {
+
+    return unformattedProperties
+}
