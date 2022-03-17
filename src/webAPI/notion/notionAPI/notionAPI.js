@@ -1,14 +1,19 @@
 import { Client } from "@notionhq/client"
+import { extractEssentialPropertyValues } from "./formattingUtils"
 
-const notion = new Client({
-    auth: process.env.NOTION_SCHEDULE_PLANNER_INTEGRATION_TOKEN
-})
 
-export const fetchScheduleEntriesVerboseResult = async ({ sortsArray, filterObject }) => {
-    const response = await notion.databases.query({ 
-        database_id: process.env.NOTION_SCHEDULE_DATABASE_ID,
+
+export async function queryNotionDatabase({ clientToken, databaseID, sortsArray, filterObject, isRaw = false }) {
+
+    const notion = new Client({
+        auth: clientToken
+    })
+
+    const response = await notion.databases.query({
+        database_id: databaseID,
         sorts: sortsArray,
         filter: filterObject
     })
-    return response
+
+    return response.results.map(entry => extractEssentialPropertyValues(entry.properties))
 }
