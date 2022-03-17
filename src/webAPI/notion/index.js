@@ -1,21 +1,15 @@
-import { Client } from "@notionhq/client"
-    
-// Set up SDK Client with authorization
-const notion = new Client({
-    auth: process.env.NOTION_SCHEDULE_PLANNER_INTEGRATION_TOKEN
-})
+import { fetchScheduleEntriesVerboseResult } from "./notionAPI"
+import { upcomingEventsInAscendingOrder } from "./queries"
+import { extractEssentialPropertyValues } from "./formattingUtils"
 
-// Create Sorting request function
-export async function fetchAllScheduleEntries() {
-    const databaseId = process.env.NOTION_SCHEDULE_DATABASE_ID;
-    const response = await notion.databases.query({ 
-        database_id: databaseId,
-        sorts: [
-            {
-                property: 'Date',
-                direction: 'ascending'
-            }
-        ]
-    })
+export async function fetchUpcomingEvents() {
+    const response = await fetchAndFormatScheduleEntries(upcomingEventsInAscendingOrder)
     return response
 }
+
+export async function fetchAndFormatScheduleEntries(queryParamsObject) {
+    const response = await fetchScheduleEntriesVerboseResult(queryParamsObject)
+    return response.results.map(entry => extractEssentialPropertyValues(entry.properties))
+}
+
+

@@ -25,6 +25,8 @@ export const loggableEventMessage = (entry) => {
         '\nDescription:' +
         entry?.Description?.rich_text[0]?.plain_text +
         `\nMeeting Focus: ${entry['Meeting Focus']?.rich_text[0]?.plain_text}` +
+        `\nTags: Content: ${entry['Tags: Content']?.multi_select}` +
+        `\nTags: Reminders: ${entry['Tags: Reminders']?.multi_select}` +
         `\nFormat: ${entry?.Format?.select?.name}` +
         `\nMeeting Style: ${entry['Meeting Style']?.select?.name}` +
         `\nHost: ${entry?.Host?.rich_text[0]?.plain_text}` +

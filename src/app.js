@@ -1,20 +1,20 @@
 import { postToDiscord } from "./webAPI/discord/postToDiscord"
 import { testMessage, loggableEventMessage } from "./messages"
 import { TEST_DISCORD_WEBHOOK } from "./constants"
-import { fetchAllScheduleEntries } from "./webAPI/notion"
+import { fetchUpcomingEvents } from "./webAPI/notion"
 
 export const app = async () => {
 
 
-    const response = await fetchAllScheduleEntries()
+    const response = await fetchUpcomingEvents()
 
-    const firstEntry = response.results[0].properties
+    const firstEntry = response[0]
 
 
 
-    console.log(loggableEventMessage(firstEntry))
+    console.log(response)
 
-    response.results.forEach(entry => entry.properties['Meeting Title']?.title[0]?.plain_text ? console.log(loggableEventMessage(entry.properties)) : null)
+    // response.results.forEach(entry => entry.properties['Meeting Title']?.title[0]?.plain_text ? console.log(loggableEventMessage(entry.properties)) : null)
 
 
 
