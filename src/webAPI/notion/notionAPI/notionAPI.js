@@ -9,7 +9,7 @@ export async function queryNotionDatabase({ clientToken, databaseID, sortsArray,
         auth: clientToken
     })
 
-    const response = await notion.databases.query({
+    const rawQueryResponse = await notion.databases.query({
         database_id: databaseID,
         sorts: sortsArray,
         filter: filterObject
@@ -19,6 +19,9 @@ export async function queryNotionDatabase({ clientToken, databaseID, sortsArray,
         return response
     }
 
-    return response.results.map(entry => extractEssentialPropertyValues(entry.properties))
+    return rawQueryResponse
+
+    // THE BEFORE WAY
+    // return response.results.map(entry => extractEssentialPropertyValues(entry.properties))
 
 }

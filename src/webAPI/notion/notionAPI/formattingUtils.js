@@ -1,3 +1,5 @@
+import camelCase from "lodash.camelcase"
+
 export function extractEssentialPropertyValues(entryProperties) {
     return ({
         date: entryProperties?.Date?.date?.start,
@@ -12,12 +14,45 @@ export function extractEssentialPropertyValues(entryProperties) {
     })
 }
 
-export function formatResponse(queryReponse) {
-    const { results } = queryReponse
-    results.map(entry => extractAndFormatEntryProperties(entry.properties))
+export function formatResponse(rawQueryResponse) {
+    const { results } = rawQueryResponse
+    results.map(rawEntry => extractAndFormatEntryProperties(rawEntry.properties))
 }
 
-export function extractAndFormatEntryProperties(unformattedProperties) {
+export function extractAndFormatEntryProperties(rawPropertiesObject) {
 
-    return unformattedProperties
+    const rawKeyNames = Object.keys(rawPropertiesObject)
+    
+    const formattedPropertiesObject = {}
+    rawKeyNames.forEach( rawKeyName => {
+        return formattedPropertiesObject[camelCase(rawKeyName)] = dynamicallyExtractValue(rawPropertiesObject[rawKeyName])
+    })
+    
+    return formattedPropertiesObject
+}
+
+function dynamicallyExtractValue(rawValueObject) {
+
+    if ( rawValueObject.hasOwnProperty(rawValueObject.type) && typeof rawValueObject[rawValueObject != 'string'] ) {
+        return rawValueObject[rawValueObject.type]
+    }
+
+    switch (rawValueObject.type) {
+        case 'rich_text':
+            return rawValueObject.rich_text
+        case 'text':
+            return rawValueObject.text
+        case 'date':
+            return rawValueObject.date.start
+        default:
+            return { NOTE_FROM_RANDY: 'See `formattingUtils.js` to custom format', payload: rawValueObject}
+    }
+
+    /* 
+    Note: Each property type in Notion has it's own data shape (requiring custom formatting)
+    I have not done them all.
+    
+    If you make a new property and it displays in a wierd way,
+    you will have to come here and add your own logic.
+    */
 }

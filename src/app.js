@@ -7,18 +7,19 @@ import { extractAndFormatEntryProperties } from "./webAPI/notion/notionAPI/forma
 export const app = async () => {
 
 
-    const response = await fetchUpcomingEvents()
+    const rawQueryResponse = await fetchUpcomingEvents()
 
-    const firstEntry = response.results[0]
+
+    const firstRawEntry = rawQueryResponse.results[0]
 
     console.log('\n****************\n')
     console.log('     BEFORE     ')
     console.log('\n****************\n')
-    console.log(firstEntry)
+    console.log(firstRawEntry.properties)
     console.log('\n****************\n')
     console.log('     AFTER      ')
     console.log('\n****************\n')
-    console.log(extractAndFormatEntryProperties(firstEntry))
+    console.log(extractAndFormatEntryProperties(firstRawEntry.properties))
 
     // response.results.forEach(entry => entry.properties['Meeting Title']?.title[0]?.plain_text ? console.log(loggableEventMessage(entry.properties)) : null)
 
