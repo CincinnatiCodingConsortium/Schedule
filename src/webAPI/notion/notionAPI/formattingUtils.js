@@ -25,13 +25,13 @@ export function parseEntryProperties(rawPropertiesObject) {
     
     const formattedPropertiesObject = {}
     rawKeyNames.forEach( rawKeyName => {
-        return formattedPropertiesObject[camelCase(rawKeyName)] = dynamicallyExtractSinglePropertyValue(rawPropertiesObject[rawKeyName])
+        return formattedPropertiesObject[camelCase(rawKeyName)] = dynamicallyParseValue(rawPropertiesObject[rawKeyName])
     })
     
     return formattedPropertiesObject
 }
 
-function dynamicallyExtractSinglePropertyValue(rawValueObject) {
+function dynamicallyParseValue(rawValueObject) {
 
     if ( typeof rawValueObject[rawValueObject.type] === 'string' ) {
         return rawValueObject[rawValueObject.type]
@@ -61,7 +61,7 @@ function dynamicallyExtractSinglePropertyValue(rawValueObject) {
     If you make a new property and it displays in a wierd way,
     you will have to come here and add your own logic.
 
-    When you add your own logic, please ensure that you have accounted
-    to see what happens when that property is left blank.  (Learn from my mistake!)
+    If you add your own logic, please ensure that you have accounted
+    for what happens when that property type is left blank.  (Learn from my mistake!)
     */
 }

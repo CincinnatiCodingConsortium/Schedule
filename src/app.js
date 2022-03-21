@@ -9,7 +9,6 @@ export const app = async () => {
 
     const rawQueryResponse = await fetchUpcomingEvents()
 
-
     const firstRawEntry = rawQueryResponse.results[0]
 
     console.log('\n****************\n')
