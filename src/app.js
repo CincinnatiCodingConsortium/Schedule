@@ -2,25 +2,17 @@ import { postToDiscord } from "./webAPI/discord/postToDiscord"
 import { testMessage, loggableEventMessage } from "./messages"
 import { TEST_DISCORD_WEBHOOK } from "./constants"
 import { fetchUpcomingEvents } from "./webAPI/notion"
-import { parseEntryProperties } from "./webAPI/notion/notionAPI/formattingUtils"
 
 export const app = async () => {
 
 
-    const rawQueryResponse = await fetchUpcomingEvents()
+    const response = await fetchUpcomingEvents()
 
-    const firstRawEntry = rawQueryResponse.results[0]
 
-    console.log('\n****************\n')
-    console.log('     BEFORE     ')
-    console.log('\n****************\n')
-    console.log(firstRawEntry.properties)
-    console.log('\n****************\n')
-    console.log('     AFTER      ')
-    console.log('\n****************\n')
-    console.log(parseEntryProperties(firstRawEntry.properties))
+    const firstRawEntry = response[0]
 
-    // response.results.forEach(entry => entry.properties['Meeting Title']?.title[0]?.plain_text ? console.log(loggableEventMessage(entry.properties)) : null)
+    console.log(firstRawEntry)
+
 
 
 

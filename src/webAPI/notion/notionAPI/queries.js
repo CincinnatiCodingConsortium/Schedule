@@ -1,3 +1,6 @@
+import { localISOTime } from "../../../utils/timeTools"
+
+
 // SORTS
 
 export const sortByDateAscendingArray = [{
@@ -10,7 +13,7 @@ export const sortByDateAscendingArray = [{
 export const filterOnOrAfterToday = {
     property: 'Date',
     date: {
-        on_or_after: new Date().toISOString()
+        on_or_after: localISOTime
     }
 }
 

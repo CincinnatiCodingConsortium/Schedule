@@ -1,5 +1,5 @@
 import { Client } from "@notionhq/client"
-import { extractEssentialPropertyValues } from "./formattingUtils"
+import { formatResponse } from "./formattingUtils"
 
 
 
@@ -16,10 +16,10 @@ export async function queryNotionDatabase({ clientToken, databaseID, sortsArray,
     })
 
     if (isRaw) {
-        return response
+        return rawQueryResponse
     }
 
-    return rawQueryResponse
+    return formatResponse(rawQueryResponse)
 
     // THE BEFORE WAY
     // return response.results.map(entry => extractEssentialPropertyValues(entry.properties))

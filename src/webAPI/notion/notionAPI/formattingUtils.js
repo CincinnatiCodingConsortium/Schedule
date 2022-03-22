@@ -1,28 +1,34 @@
 import camelCase from "lodash.camelcase"
 
-
 export function formatResponse(rawQueryResponse) {
     const { results } = rawQueryResponse
-    results.map(rawEntry => parseEntryProperties(rawEntry.properties))
+    return results.map(rawEntry => extractAndFormatRawProperties(rawEntry))
 }
 
-export function parseEntryProperties(rawPropertiesObject) {
+function extractAndFormatRawProperties(rawEntry) {
+
+    const { properties: rawPropertiesObject } = rawEntry
 
     const rawKeyNames = Object.keys(rawPropertiesObject)
     
     const formattedPropertiesObject = {}
     rawKeyNames.forEach( rawKeyName => {
-        return formattedPropertiesObject[camelCase(rawKeyName)] = dynamicallyParseValue(rawPropertiesObject[rawKeyName])
+        return formattedPropertiesObject[camelCase(rawKeyName)] = dynamicallyFormatValues(rawPropertiesObject[rawKeyName])
     })
-    
     return formattedPropertiesObject
 }
 
-function dynamicallyParseValue(rawValueObject) {
+function dynamicallyFormatValues(rawValueObject) {
+
+
+    // if (!rawValueObject) {
+    //     return
+    // }
 
     if ( typeof rawValueObject[rawValueObject.type] === 'string' ) {
         return rawValueObject[rawValueObject.type]
     }
+
 
     switch (rawValueObject.type) {
         case 'rich_text':
