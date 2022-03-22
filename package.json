@@ -2,7 +2,8 @@
   "dependencies": {
     "@notionhq/client": "^1.0.2",
     "axios": "^0.25.0",
-    "dotenv": "^14.3.2"
+    "dotenv": "^14.3.2",
+    "lodash.camelcase": "^4.3.0"
   },
   "type": "module",
   "name": "Schedule",

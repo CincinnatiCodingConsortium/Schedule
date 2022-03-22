@@ -8,13 +8,11 @@ export const app = async () => {
 
     const response = await fetchUpcomingEvents()
 
-    const firstEntry = response[0]
 
+    const firstRawEntry = response[0]
 
+    console.log(firstRawEntry)
 
-    console.log(response)
-
-    // response.results.forEach(entry => entry.properties['Meeting Title']?.title[0]?.plain_text ? console.log(loggableEventMessage(entry.properties)) : null)
 
 
 
