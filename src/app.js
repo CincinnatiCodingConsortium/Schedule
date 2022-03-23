@@ -8,10 +8,11 @@ export const app = async () => {
 
     const response = await fetchUpcomingEvents()
 
+    // TODO: Add try/catch logic to send erros to error channel.
 
-    const firstRawEntry = response[0]
+    const firstEntry = response[0]
 
-    console.log(firstRawEntry)
+    console.log(firstEntry)
 
 
 

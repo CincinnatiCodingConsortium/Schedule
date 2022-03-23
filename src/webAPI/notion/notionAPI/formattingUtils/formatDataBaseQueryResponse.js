@@ -1,6 +1,6 @@
 import camelCase from "lodash.camelcase"
 
-export function formatResponse(rawQueryResponse) {
+export function formatDataBaseQueryResponse(rawQueryResponse) {
     const { results } = rawQueryResponse
     return results.map(rawEntry => extractAndFormatRawProperties(rawEntry))
 }
@@ -20,10 +20,6 @@ function extractAndFormatRawProperties(rawEntry) {
 
 function dynamicallyFormatValues(rawValueObject) {
 
-
-    // if (!rawValueObject) {
-    //     return
-    // }
 
     if ( typeof rawValueObject[rawValueObject.type] === 'string' ) {
         return rawValueObject[rawValueObject.type]

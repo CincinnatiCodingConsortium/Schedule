@@ -1,1 +1,1 @@
-export * from './fetchFromNotion'
+export * from './fetchUpcomingEvents'
